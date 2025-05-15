@@ -61,36 +61,30 @@ function prevProject() {
   showProject(prev);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Initialize projects tab
-  showProject(1);
-
-  // Contact form submission
+cument.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contactForm");
   const responseMsg = document.getElementById("responseMsg");
 
-  if (form) {
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      const formData = new FormData(form);
+    const formData = new FormData(form);
 
-      try {
-        const res = await fetch("https://formspree.io/f/mqaqwyyy", {
-          method: "POST",
-          headers: { Accept: "application/json" },
-          body: formData,
-        });
+    try {
+      const res = await fetch("https://formspree.io/f/mqaqwyyy", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: formData,
+      });
 
-        if (res.ok) {
-          responseMsg.textContent = "✅ Message sent!";
-          form.reset();
-        } else {
-          responseMsg.textContent = "❌ Something went wrong. Please try again.";
-        }
-      } catch (error) {
-        responseMsg.textContent = "⚠️ Network error. Please try later.";
+      if (res.ok) {
+        responseMsg.textContent = "✅ Message sent!";
+        form.reset();
+      } else {
+        responseMsg.textContent = "❌ Something went wrong. Please try again.";
       }
-    });
-  }
+    } catch (error) {
+      responseMsg.textContent = "⚠️ Network error. Please try later.";
+    }
+  });
 });
