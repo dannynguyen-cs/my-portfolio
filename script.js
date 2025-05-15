@@ -82,9 +82,9 @@ document.addEventListener("DOMContentLoaded", () => {
         responseMsg.textContent = "✅ Message sent!";
         form.reset();
       } else {
-        responseMsg.textContent = "❌ Submission failed.";
+        responseMsg.textContent = "❌ Submission failed. Please try again.";
       }
-    } catch (error) {
+    } catch (err) {
       responseMsg.textContent = "⚠️ Network error. Try again later.";
     }
   });
