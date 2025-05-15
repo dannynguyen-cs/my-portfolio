@@ -61,38 +61,36 @@ function prevProject() {
   showProject(prev);
 }
 
-// Optional: Call this on load to highlight the first page
-document.addEventListener('DOMContentLoaded', () => showProject(1));
-
-function toggleFAQ(index) {
-  const answer = document.getElementById(`faq-${index}`);
-  answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
-}
-
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize projects tab
+  showProject(1);
+
+  // Contact form submission
   const form = document.getElementById("contactForm");
   const responseMsg = document.getElementById("responseMsg");
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  if (form) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-    const formData = new FormData(form);
+      const formData = new FormData(form);
 
-    try {
-      const res = await fetch("https://formspree.io/f/mqaqwyyy", {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: formData,
-      });
+      try {
+        const res = await fetch("https://formspree.io/f/mqaqwyyy", {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: formData,
+        });
 
-      if (res.ok) {
-        responseMsg.textContent = "✅ Message sent!";
-        form.reset();
-      } else {
-        responseMsg.textContent = "❌ Something went wrong. Please try again.";
+        if (res.ok) {
+          responseMsg.textContent = "✅ Message sent!";
+          form.reset();
+        } else {
+          responseMsg.textContent = "❌ Something went wrong. Please try again.";
+        }
+      } catch (error) {
+        responseMsg.textContent = "⚠️ Network error. Please try later.";
       }
-    } catch (error) {
-      responseMsg.textContent = "⚠️ Network error. Please try later.";
-    }
-  });
+    });
+  }
 });
