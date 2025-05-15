@@ -98,8 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const faqButtons = document.querySelectorAll(".faq-question");
   faqButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      const answer = button.nextElementSibling;
-      if (answer && answer.classList.contains("faq-answer")) {
+      const parent = button.closest(".faq-item");
+      const answer = parent ? parent.querySelector(".faq-answer") : null;
+      if (answer) {
         answer.style.display = answer.style.display === "block" ? "none" : "block";
       }
     });
