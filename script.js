@@ -98,10 +98,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const faqButtons = document.querySelectorAll(".faq-question");
   faqButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      const parent = button.closest(".faq-item");
-      const answer = parent ? parent.querySelector(".faq-answer") : null;
-      if (answer) {
-        answer.style.display = answer.style.display === "block" ? "none" : "block";
+      const answerId = button.getAttribute("onclick")?.match(/toggleFAQ\((\d)\)/)?.[1];
+      if (answerId) {
+        const answer = document.getElementById(`faq-${answerId}`);
+        if (answer) {
+          answer.style.display = answer.style.display === "block" ? "none" : "block";
+        }
       }
     });
   });
