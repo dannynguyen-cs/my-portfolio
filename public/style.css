@@ -1,0 +1,288 @@
+/* Make sure this file is linked correctly in index.html */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  background: url('assets/wallpaper.png') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Press Start 2P', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#desktop {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-window {
+  width: 700px;
+  max-width: 90%;
+  background: #ffffff;
+  border: 2px solid black;
+  box-shadow: 5px 5px 0 black;
+  image-rendering: pixelated;
+  font-family: 'Press Start 2P', monospace;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ADD8E6; /* light blue */
+  color: #000;
+  padding: 8px 12px;
+  height: 32px;
+  font-size: 12px;
+  border-bottom: 2px solid #333;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.window-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.window-controls .dot {
+  width: 10px;
+  height: 10px;
+  border: 2px solid black;
+  background: white;
+  box-shadow: 1px 1px 0 black;
+}
+
+.window-title {
+  flex-grow: 1;
+  text-align: center;
+  color: #444;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.close-x {
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 10px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Press Start 2P', monospace;
+  border: 2px solid black;
+  box-shadow: 2px 2px 0 black;
+}
+.window-content {
+  padding: 24px 32px;
+  flex-grow: 1;
+  overflow-y: auto;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.highlight {
+  color: orange;
+}
+
+.tab-buttons {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.tab-buttons button {
+  margin: 5px;
+  padding: 8px 12px;
+  background-color: white;
+  border: 2px solid black;
+  box-shadow: 2px 2px 0 black;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.tab-buttons button:hover {
+  background-color: #f0f0f0;
+}
+
+.tab-content {
+  margin-top: 20px;
+  text-align: left;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  font-family: 'Press Start 2P', monospace;
+  border: 2px solid black;
+  background: white;
+  font-size: 10px;
+}
+
+button[type="submit"] {
+  background-color: white;
+  padding: 10px 16px;
+  border: 2px solid black;
+  box-shadow: 2px 2px 0 black;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  margin-top: 10px;
+}
+
+.close-x:hover {
+  background-color: #ff3333;
+}
+
+.popup-window {
+  position: absolute;
+  width: 500px;
+  height: auto;
+  background: white;
+  border: 2px solid black;
+  box-shadow: 6px 6px 0 black;
+  top: 100px;
+  left: 100px;
+  display: none;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.popup-title-bar {
+  background-color: #ADD8E6;
+  padding: 8px;
+  border-bottom: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+}
+
+.popup-title-bar button {
+  background-color: red;
+  color: white;
+  border: none;
+  font-weight: bold;
+  padding: 2px 10px;
+  border: 2px solid black;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 black;
+}
+
+.popup-content {
+  padding: 16px;
+  font-size: 10px;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.popup-window * {
+  box-sizing: border-box;
+}
+
+.popup-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-content input,
+.popup-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  border: 2px solid black;
+  background-color: white;
+  resize: none;
+}
+
+.popup-content textarea {
+  height: 100px;
+}
+
+.popup-content button[type="submit"] {
+  background-color: white;
+  color: black;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  border: 2px solid black;
+  padding: 10px;
+  width: 100px;
+  align-self: flex-start;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 black;
+}
+
+.about-photo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 2px solid black;
+  margin-bottom: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 4px;
+}
+
+.project-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+  gap: 10px;
+}
+
+.arrow-btn,
+.page-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  border: 2px solid black;
+  padding: 4px 8px;
+  background: white;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 black;
+}
+
+.page-btn.active-page {
+  background-color: black;
+  color: white;
+}
+
+.faq-item {
+  margin-bottom: 10px;
+}
+
+.faq-question {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  background-color: white;
+  border: 2px solid black;
+  padding: 8px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 black;
+}
+
+.faq-answer {
+  display: none;
+  margin-top: 6px;
+  font-size: 10px;
+  padding: 8px;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  background-color: #f9f9f9;
+}

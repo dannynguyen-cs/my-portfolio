@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Desktop</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="desktop">
+    <div class="main-window">
+      <div class="title-bar">
+        <div class="window-controls">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+        <span class="window-title">my desktop</span>
+        <span class="close-x">X</span>
+      </div>
+
+      <div class="window-content">
+        <h1>hi! <span class="highlight">i’m danny</span></h1>
+        <p>developer, designer, and builder</p>
+
+        <div class="tab-buttons">
+          <button onclick="openPopup('window-about')">about</button>
+          <button onclick="openPopup('window-links')">links</button>
+          <button onclick="openPopup('window-projects')">projects</button>
+          <button onclick="openPopup('window-faq')">faq</button>
+          <button onclick="openPopup('window-contact')">contact</button>
+        </div>
+
+        <div class="tab-content" id="about" style="display: none;">
+          <h2>About Me</h2>
+          <p>I'm a passionate developer focused on crafting user-first interfaces.</p>
+        </div>
+        <div class="tab-content" id="links" style="display: none;">
+          <h2>Links</h2>
+          <ul>
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Portfolio</a></li>
+          </ul>
+        </div>
+        <div class="tab-content" id="work" style="display: none;">
+          <h2>My Work</h2>
+          <p>Here’s a showcase of things I've built...</p>
+        </div>
+        <div class="tab-content" id="faq" style="display: none;">
+          <h2>FAQ</h2>
+          <p>Got questions? I’ve got answers.</p>
+        </div>
+        <div class="tab-content" id="contact" style="display: none;">
+          <h2>Contact</h2>
+          <form id="contactForm">
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+            <p id="responseMsg"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popup Windows -->
+    <div class="popup-window" id="window-about" style="top: 80px; left: 120px;">
+      <div class="popup-title-bar" onmousedown="startDrag(event, 'window-about')">
+        <span>About</span>
+        <button class="popup-close" onclick="closePopup('window-about')">X</button>
+      </div>
+      <div class="popup-content">
+        <img src="assets/me.jpg" alt="Photo of Danny" class="about-photo" />
+        <h2>About Me</h2>
+        <p>
+          I'm a driven <strong>computer science student</strong> who thrives in collaborative settings.
+          I enjoy working on team-based projects where I can contribute both <strong>technical skills</strong> and <strong>leadership</strong> to bring ideas to life.
+        </p>
+        <p>
+          My experience spans from front-end development and UI design to scripting and backend logic.
+          I believe in building things that are both functional and fun — just like this site.
+        </p>
+      </div>
+    </div>
+
+    <div class="popup-window" id="window-links" style="top: 160px; left: 1200px;">
+      <div class="popup-title-bar" onmousedown="startDrag(event, 'window-links')">
+        <span>Links</span>
+        <button class="popup-close" onclick="closePopup('window-links')">X</button>
+      </div>
+      <div class="popup-content">
+        <h2>My Links</h2>
+
+        <ul class="link-list">
+          <li><a href="https://github.com/dannynguyen-cs" target="_blank">GitHub Profile</a></li>
+          <li><a href="https://www.linkedin.com/in/dannynguyen-cs/" target="_blank">LinkedIn Profile</a></li>
+        </ul>
+
+        <h3>📄 Resume</h3>
+        <p>
+          <a href="assets/resume.pdf" target="_blank">View Resume (PDF)</a>
+        </p>
+
+        <!-- Optional: Embed preview of the PDF -->
+        <!-- <iframe src="assets/resume.pdf" width="100%" height="300px" style="border: 2px solid black;"></iframe> -->
+      </div>
+    </div>
+
+    <div class="popup-window" id="window-projects" style="top: 450px; left: 150px;">
+      <div class="popup-title-bar" onmousedown="startDrag(event, 'window-projects')">
+        <span>Projects</span>
+        <button class="popup-close" onclick="closePopup('window-projects')">X</button>
+      </div>
+      <div class="popup-content">
+        <!-- Container for switching projects -->
+        <div id="project-pages">
+          <!-- Project 1 -->
+          <div class="project-page" id="project-1">
+            <h3>🎮 Interactive Game Development</h3>
+            <p>A group-based Unity project where I contributed to animations, character design, sound, and gameplay logic.</p>
+            <ul>
+              <li>Drew and designed original characters based on concept art</li>
+              <li>Integrated C# scripts for interactive movement and attack mechanics</li>
+              <li>Synced animations and audio for immersive player feedback</li>
+            </ul>
+            <p>
+              <a href="https://github.com/mahmed57/spear-head-productions" target="_blank">🔗 GitHub Repo</a><br>
+              <a href="https://drive.google.com/file/d/13I1pOOXgeyLf4G9TMmfBj7Htd7xrEAtk/view" target="_blank">▶️ Watch Promo Video</a>
+            </p>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-page" id="project-2" style="display: none;">
+            <h3>🧩 Volunteer Management System</h3>
+            <p>University of Houston, Software Design</p>
+            <ul>
+              <li>Designed a software application to manage and optimize volunteer activities for a non-profit organization</li>
+              <li>Developed a volunteer history feature to track participation and performance</li>
+              <li>Connected large datasets to both front-end and back-end systems to enhance website functionality</li>
+            </ul>
+            <p>
+              <a href="https://github.com/NotRichieNguyen/cosc4353grp15" target="_blank">🔗 GitHub Repo</a>
+            </p>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-page" id="project-3" style="display: none;">
+            <h3>🏠 Real Estate Predictor</h3>
+            <p>Python, Jupyter Notebook, Pandas, Scikit-learn, Matplotlib</p>
+            <ul>
+              <li>Trained mathematical models to predict real estate price trends using linear regression</li>
+              <li>Scripted a predictive model in Python, achieving a prediction accuracy of 85.24%</li>
+              <li>Visualized data trends using Matplotlib to support findings and communicate insights</li>
+            </ul>
+            <p>
+              <a href="assets/real-estate-report.pdf" target="_blank">📄 View Full Report (PDF)</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- ✅ Project Pagination Navigation -->
+        <div class="project-nav">
+          <button class="arrow-btn" onclick="prevProject()">←</button>
+          <span class="page-btn" onclick="showProject(1)" id="page-1">1</span>
+          <span class="page-btn" onclick="showProject(2)" id="page-2">2</span>
+          <span class="page-btn" onclick="showProject(3)" id="page-3">3</span>
+          <button class="arrow-btn" onclick="nextProject()">→</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup-window" id="window-faq" style="top: 80px; left: 675px;">
+      <div class="popup-title-bar" onmousedown="startDrag(event, 'window-faq')">
+        <span>FAQ</span>
+        <button class="popup-close" onclick="closePopup('window-faq')">X</button>
+      </div>
+      <div class="popup-content">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(1)">What's your current hobby?</button>
+          <div class="faq-answer" id="faq-1">
+            I’m currently passionate about lion dancing and traveling to help those in need.  
+            <br><br>
+            Here's a video of me and my lion dance team in Vietnam:
+            <br>
+            <a href="https://www.youtube.com/watch?v=6rRGJPCLxCE" target="_blank">▶️ Watch the video</a>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(2)">Where did you go to school?</button>
+          <div class="faq-answer" id="faq-2">
+            I graduated from the University of Houston with a <strong>Bachelor of Science in Computer Science</strong> and a <strong>minor in Mathematics</strong>.
+          </div>
+        </div>
+
+        <!-- You can add 3 more if you'd like -->
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(3)">What do you enjoy designing?</button>
+          <div class="faq-answer" id="faq-3">
+            I love creating web interfaces that blend nostalgia with modern interactivity — like this desktop-inspired site.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(4)">Do you have team experience?</button>
+          <div class="faq-answer" id="faq-4">
+            Absolutely! Most of my favorite projects involved collaboration — whether for school, nonprofits, or creative teams like my lion dance group.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(5)">Can I reach out to collaborate?</button>
+          <div class="faq-answer" id="faq-5">
+            Definitely! Head to the <strong>Contact</strong> tab and send me a message — I’m always open to cool new ideas and partnerships.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup-window" id="window-contact" style="top: 320px; left: 1100px;">
+      <div class="popup-title-bar" onmousedown="startDrag(event, 'window-contact')">
+        <span>Contact</span>
+        <button class="popup-close" onclick="closePopup('window-contact')">X</button>
+      </div>
+      <div class="popup-content">
+        <form id="contactForm">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea name="message" placeholder="Your Message" required></textarea>
+          <button type="submit">Send</button>
+          <p id="responseMsg"></p>
+        </form>
+      </div>
+    </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
