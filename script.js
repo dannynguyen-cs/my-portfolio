@@ -65,32 +65,43 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contactForm");
   const responseMsg = document.getElementById("responseMsg");
 
-  if (!form) return;
+  if (form) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+      const formData = new FormData(form);
 
-    const formData = new FormData(form);
+      try {
+        const res = await fetch("https://formspree.io/f/mqaqwyyy", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+          },
+          body: formData,
+        });
 
-    try {
-      const res = await fetch("https://formspree.io/f/mqaqwyyy", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-        },
-        body: formData,
-      });
-
-      if (res.ok) {
-        responseMsg.textContent = "✅ Message sent!";
-        form.reset();
-        history.replaceState(null, null, window.location.pathname); // Remove query params from URL
-      } else {
-        responseMsg.textContent = "❌ Submission failed. Please try again.";
+        if (res.ok) {
+          responseMsg.textContent = "✅ Message sent!";
+          form.reset();
+          history.replaceState(null, null, window.location.pathname);
+        } else {
+          responseMsg.textContent = "❌ Submission failed. Please try again.";
+        }
+      } catch (err) {
+        responseMsg.textContent = "⚠️ Network error. Try again later.";
+        console.error("Form submission error:", err);
       }
-    } catch (err) {
-      responseMsg.textContent = "⚠️ Network error. Try again later.";
-      console.error("Form submission error:", err);
-    }
+    });
+  }
+
+  // FAQ toggle logic
+  const faqButtons = document.querySelectorAll(".faq-question");
+  faqButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const answer = button.nextElementSibling;
+      if (answer && answer.classList.contains("faq-answer")) {
+        answer.style.display = answer.style.display === "block" ? "none" : "block";
+      }
+    });
   });
 });
