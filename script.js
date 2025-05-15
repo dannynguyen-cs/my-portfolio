@@ -68,9 +68,3 @@ function toggleFAQ(index) {
   const answer = document.getElementById(`faq-${index}`);
   answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
 }
-
-document.getElementById('contactForm').addEventListener('submit', function (e) {
-  e.preventDefault(); // stop actual submission
-  document.getElementById('responseMsg').textContent = "✅ Message sent!";
-  this.reset();
-});
