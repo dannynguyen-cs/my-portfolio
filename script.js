@@ -68,19 +68,23 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!form) return;
 
   form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission behavior
 
     const formData = new FormData(form);
 
     try {
       const res = await fetch("https://formspree.io/f/mqaqwyyy", {
         method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
         body: formData,
       });
 
       if (res.ok) {
         responseMsg.textContent = "✅ Message sent!";
         form.reset();
+        history.replaceState(null, null, window.location.pathname); // Remove query params from URL
       } else {
         responseMsg.textContent = "❌ Submission failed. Please try again.";
       }
