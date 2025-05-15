@@ -81,19 +81,16 @@ document.addEventListener("DOMContentLoaded", () => {
         body: formData,
       });
 
-      const data = await res.json();
-
       if (res.ok) {
         responseMsg.textContent = "✅ Message sent!";
         form.reset();
-        history.replaceState(null, null, window.location.pathname);
-      } else if (data && data.errors && data.errors.length > 0) {
-        responseMsg.textContent = `❌ ${data.errors[0].message}`;
+        history.replaceState(null, null, window.location.pathname); // Remove query params from URL
       } else {
         responseMsg.textContent = "❌ Submission failed. Please try again.";
       }
     } catch (err) {
       responseMsg.textContent = "⚠️ Network error. Try again later.";
+      console.error("Form submission error:", err);
     }
   });
 });
