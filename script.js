@@ -61,9 +61,11 @@ function prevProject() {
   showProject(prev);
 }
 
-cument.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contactForm");
   const responseMsg = document.getElementById("responseMsg");
+
+  if (!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -73,7 +75,6 @@ cument.addEventListener("DOMContentLoaded", () => {
     try {
       const res = await fetch("https://formspree.io/f/mqaqwyyy", {
         method: "POST",
-        headers: { Accept: "application/json" },
         body: formData,
       });
 
@@ -81,10 +82,10 @@ cument.addEventListener("DOMContentLoaded", () => {
         responseMsg.textContent = "✅ Message sent!";
         form.reset();
       } else {
-        responseMsg.textContent = "❌ Something went wrong. Please try again.";
+        responseMsg.textContent = "❌ Submission failed.";
       }
     } catch (error) {
-      responseMsg.textContent = "⚠️ Network error. Please try later.";
+      responseMsg.textContent = "⚠️ Network error. Try again later.";
     }
   });
 });

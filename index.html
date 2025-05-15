@@ -224,12 +224,11 @@
         <button class="popup-close" onclick="closePopup('window-contact')">X</button>
       </div>
       <div class="popup-content">
-        <form id="contactForm">
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Your Email" required />
-          <textarea name="message" placeholder="Your Message" required></textarea>
-          <button type="submit">Send</button>
-          <p id="responseMsg"></p>
+        <form action="https://formspree.io/f/mqaqwyyy" method="POST">
+          <input type="text" name="name" placeholder="Name" />
+          <input type="email" name="email" placeholder="Email" />
+          <textarea name="message" placeholder="Message"></textarea>
+          <button type="submit">Send Test</button>
         </form>
       </div>
     </div>
